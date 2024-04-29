@@ -1,2 +1,2 @@
-# Pr-veeksamen
+# Proveeksamen
 Prøveeksamen i driftstøtte, brukerstøtte og utvikling.
