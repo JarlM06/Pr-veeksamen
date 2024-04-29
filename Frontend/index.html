@@ -35,7 +35,7 @@
         <form onsubmit="encrypt(event)">
             <div class="input-field">
                 <label for="input-code">Kode for kryptering</label>
-                <input type="text" name="input-code" id="input-code" class="input">
+                <?php include '../Backend/getNames.php'; ?>
             </div>
             <br>
             <div class="input-field">
@@ -52,7 +52,7 @@
         <form onsubmit="decrypt(event)">
             <div class="input-field">
                 <label for="input-code">Kode for dekryptering</label>
-                <input type="text" name="input-code" id="input-code" class="input">
+                <?php include '../Backend/getNames.php'; ?>
             </div>
             <br>
             <div class="input-field">
