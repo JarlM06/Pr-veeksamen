@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Kobler til 'styles.css', 'main.js' og 'jQuery' -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../Backend/main.js"></script>
+    <title>Krypteringsprogram</title>
+</head>
+<body>
+    <!-- Tittel -->
+    <h1>Krypteringsprogram</h1>
+    <br>
+    <!-- En form som legger til en ny 'krypteringskode' med navn -->
+    <div class="form-container">
+        <form action="../Backend/newCode.php" method="post" id="addCode">
+            <div class="input-field">
+                <label for="input-newCode">Ny kode for kryptering</label>
+                <input type="text" name="input-newCode" id="input-newCode">
+            </div>
+            <br>
+            <div class="input-field">
+                <label for="input-name">Navn for kryptering</label>
+                <input type="text" name="input-name" id="input-name">
+            </div>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <br><br>
+    <!-- En form som henter inn 'krypteringskode' og det som skal krypteres -->
+    <div class="form-container">
+        <form onsubmit="encrypt(event)">
+            <div class="input-field">
+                <label for="input-code">Kode for kryptering</label>
+                <input type="text" name="input-code" id="input-code" class="input">
+            </div>
+            <br>
+            <div class="input-field">
+                <label for="input-text">Tekst som skal krypteres</label>
+                <input type="text" name="input-text" id="input-text" class="input">
+            </div>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <br>
+    <!-- En form som henter inn 'krypteringskode' og det som skal dekrypteres -->
+    <div class="form-container">
+        <form onsubmit="decrypt(event)">
+            <div class="input-field">
+                <label for="input-code">Kode for dekryptering</label>
+                <input type="text" name="input-code" id="input-code" class="input">
+            </div>
+            <br>
+            <div class="input-field">
+                <label for="input-text">Tekst som skal dekrypteres</label>
+                <input type="text" name="input-text" id="input-text" class="input">
+            </div>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
