@@ -11,10 +11,15 @@ function encrypt(event) {
     var name = formData.get('input-code');
     var text = formData.get('input-text');
 
-    code = fetchCode(name);
-
-    const encryptedText = substituteEncrypt(text, code);
-    console.log(encryptedText);
+    fetchCode(name)
+        .then((code) => {
+            console.log('Code:', code); // Handle the resolved `Code`
+            const encryptedText = substituteEncrypt(text, code);
+            console.log(encryptedText);
+        })
+        .catch((error) => {
+            console.error('Error fetching code:', error); // Handle errors
+        });
 }
 
 // Funksjon for å dekryptere tekst
@@ -36,25 +41,25 @@ function decrypt(event) {
 
 // The function that sends an AJAX request to the PHP script
 function fetchCode(name) {
-    fetch('http://172.20.128.85/Backend/getCode.php', {
-      method: 'POST', // The HTTP method for the request
+    return fetch('http://172.20.128.85/Backend/getCode.php', {
+      method: 'POST',
       headers: {
-        'Content-Type': 'text/plain' // Sending a plain text string
+        'Content-Type': 'text/plain',
       },
-      body: name // The single string as body
+      body: name,
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json(); // Expecting a JSON response from the server
       })
-      .then(data => {
-        console.log('Success:', data); // Process the returned data
-        return data.Code;
-      })
-      .catch(error => {
-        console.error('Error:', error); // Handle errors
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          return data[0].Code; // Return the first `Code` from the data
+        } else {
+          throw new Error('No data found'); // If no data is found
+        }
       });
 }
 
