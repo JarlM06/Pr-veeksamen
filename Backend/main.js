@@ -1,3 +1,4 @@
+// Funksjon for å kryptere tekst
 function encrypt(event) {
     // Hindrer default form submit
     event.preventDefault();
@@ -7,13 +8,16 @@ function encrypt(event) {
     var formData = new FormData(form);
 
     // Ekstrakt individuell data fra formData
-    var code = formData.get('input-code');
+    var name = formData.get('input-code');
     var text = formData.get('input-text');
+
+    code = fetchCode(name);
 
     const encryptedText = substituteEncrypt(text, code);
     console.log(encryptedText);
 }
 
+// Funksjon for å dekryptere tekst
 function decrypt(event) {
     // Hindrer default form submit
     event.preventDefault();
@@ -28,6 +32,33 @@ function decrypt(event) {
 
     const decryptedText = substituteDecrypt(text, code);
     console.log(decryptedText);
+}
+
+// The function that sends an AJAX request to the PHP script
+function fetchCode(name) {
+    const data = {
+        name: name
+    };
+    
+    fetch('getCode.php', {
+      method: 'POST', // The HTTP method for the request
+      headers: {
+        'Content-Type': 'application/json' // We're sending JSON data
+      },
+      body: JSON.stringify(data) // Convert data to JSON
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Expecting a JSON response from the server
+      })
+      .then(data => {
+        console.log('Success:', data); // Process the returned data
+      })
+      .catch(error => {
+        console.error('Error:', error); // Handle errors
+      });
 }
 
 function generateSubstitutionMap(key) {
