@@ -16,8 +16,10 @@ if ($conn->connect_error) {
 }
 
 // Get data from POST request
-$input = json_decode(file_get_contents('php://input'), true); // Decode JSON input
-$name = $conn->real_escape_string($input['name']); // Sanitize input
+$name = trim(file_get_contents('php://input')); // Read and trim the raw input
+
+// Escape input to prevent SQL injection
+$name = $conn->real_escape_string($name);
 
 // Fetch data from the database
 $query = "SELECT * FROM codes WHERE Name = '$name'";

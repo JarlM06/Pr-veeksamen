@@ -35,17 +35,13 @@ function decrypt(event) {
 }
 
 // The function that sends an AJAX request to the PHP script
-function fetchCode(name) {
-    const data = {
-        name: name
-    };
-    
-    fetch('getCode.php', {
+function fetchData(name) {
+    fetch('http://172.20.128.85/Backend/getCode.php', {
       method: 'POST', // The HTTP method for the request
       headers: {
-        'Content-Type': 'application/json' // We're sending JSON data
+        'Content-Type': 'text/plain' // Sending a plain text string
       },
-      body: JSON.stringify(data) // Convert data to JSON
+      body: name // The single string as body
     })
       .then(response => {
         if (!response.ok) {
