@@ -35,7 +35,7 @@ function decrypt(event) {
 }
 
 // The function that sends an AJAX request to the PHP script
-function fetchData(name) {
+function fetchCode(name) {
     fetch('http://172.20.128.85/Backend/getCode.php', {
       method: 'POST', // The HTTP method for the request
       headers: {
