@@ -14,6 +14,8 @@ function encrypt(event) {
     fetchCode(name)
         .then((code) => {
             const encryptedText = substituteEncrypt(text, code);
+            const output = document.getElementById("output");
+            output.innerHTML = encryptedText;
             console.log(encryptedText);
         })
         .catch((error) => {
@@ -37,6 +39,8 @@ function decrypt(event) {
     fetchCode(name)
         .then((code) => {
             const decryptedText = substituteDecrypt(text, code);
+            const output = document.getElementById("output");
+            output.innerHTML = decryptedText;
             console.log(decryptedText);
         })
         .catch((error) => {

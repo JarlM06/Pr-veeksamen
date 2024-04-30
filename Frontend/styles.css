@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.outer-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-container {
+    background-color: beige;
+    padding: 2rem;
+    margin: 1rem;
+    border-style: solid;
+    border-color: bisque;
+    border-width: 0.5rem;
+    border-radius: 2%;
+    max-width: 420px;
+    flex: 1;
+}
