@@ -51,6 +51,7 @@ function fetchCode(name) {
       })
       .then(data => {
         console.log('Success:', data); // Process the returned data
+        return data.Code;
       })
       .catch(error => {
         console.error('Error:', error); // Handle errors
