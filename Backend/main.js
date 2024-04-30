@@ -32,11 +32,18 @@ function decrypt(event) {
     var formData = new FormData(form);
 
     // Ekstrakt individuell data fra formData
-    var code = formData.get('input-code');
+    var name = formData.get('input-code');
     var text = formData.get('input-text');
 
-    const decryptedText = substituteDecrypt(text, code);
-    console.log(decryptedText);
+    fetchCode(name)
+        .then((code) => {
+            console.log('Code:', code); // Handle the resolved `Code`
+            const decryptedText = substituteDecrypt(text, code);
+            console.log(decryptedText);
+        })
+        .catch((error) => {
+            console.error('Error fetching code:', error); // Handle errors
+        });
 }
 
 // The function that sends an AJAX request to the PHP script
