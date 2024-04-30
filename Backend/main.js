@@ -13,7 +13,6 @@ function encrypt(event) {
 
     fetchCode(name)
         .then((code) => {
-            console.log('Code:', code); // Handle the resolved `Code`
             const encryptedText = substituteEncrypt(text, code);
             console.log(encryptedText);
         })
@@ -37,7 +36,6 @@ function decrypt(event) {
 
     fetchCode(name)
         .then((code) => {
-            console.log('Code:', code); // Handle the resolved `Code`
             const decryptedText = substituteDecrypt(text, code);
             console.log(decryptedText);
         })
