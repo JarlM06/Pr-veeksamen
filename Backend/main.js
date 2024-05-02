@@ -184,3 +184,15 @@ function createRandomCode(length) {
     }
     return result;
 }
+
+function copy() {
+    // Hent tekst området
+    var copyText = document.getElementById("output");
+  
+    // Velg tekst området
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobiler ol.
+  
+    // Kopier teksten i tekst området
+    navigator.clipboard.writeText(copyText.value);
+}
