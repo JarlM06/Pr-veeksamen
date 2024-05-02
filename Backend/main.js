@@ -142,7 +142,7 @@ function newCode(event) {
     };
 
     // Sender en POST-request til php scriptet
-    fetch("newCode.php", {
+    fetch("http://172.20.128.85/Backend/newCode.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
