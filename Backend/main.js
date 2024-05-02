@@ -14,6 +14,7 @@ function encrypt(event) {
     fetchCode(name)
         .then((code) => {
             const encryptedText = substituteEncrypt(text, code);
+            // Skriver ut den krypterte teksten
             const output = document.getElementById("output");
             output.innerHTML = encryptedText;
             console.log(encryptedText);
@@ -39,16 +40,17 @@ function decrypt(event) {
     fetchCode(name)
         .then((code) => {
             const decryptedText = substituteDecrypt(text, code);
+            // Skriver ut den dekrypterte teksten
             const output = document.getElementById("output");
             output.innerHTML = decryptedText;
             console.log(decryptedText);
         })
         .catch((error) => {
-            console.error('Error fetching code:', error); // Handle errors
+            console.error('Error fetching code:', error);
         });
 }
 
-// The function that sends an AJAX request to the PHP script
+// Funksjon som sender en AJAX request til PHP scriptet
 function fetchCode(name) {
     return fetch('http://172.20.128.85/Backend/getCode.php', {
       method: 'POST',
@@ -61,17 +63,18 @@ function fetchCode(name) {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json(); // Expecting a JSON response from the server
+        return response.json();
       })
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          return data[0].Code; // Return the first `Code` from the data
+          return data[0].Code; // Returnere then første koden fra dataene
         } else {
-          throw new Error('No data found'); // If no data is found
+          throw new Error('No data found');
         }
       });
 }
 
+// Funksjon som lager et krypterings "map" basert på en kode
 function generateSubstitutionMap(key) {
     const baseAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let shuffledAlphabet = baseAlphabet.split('');
@@ -91,6 +94,7 @@ function generateSubstitutionMap(key) {
     return substitutionMap;
 }
 
+// Funksjon som krypterer tekst ved bruk av "substitution map" laget med koden
 function substituteEncrypt(text, key) {
     const substitutionMap = generateSubstitutionMap(key);
     let encrypted = '';
@@ -104,6 +108,7 @@ function substituteEncrypt(text, key) {
     return encrypted;
 }
 
+// Funksjon som dekrypterer tekst ved bruk av "substitution map" laget med koden
 function substituteDecrypt(text, key) {
     const substitutionMap = generateSubstitutionMap(key);
     const reverseSubstitutionMap = {};
@@ -123,6 +128,7 @@ function substituteDecrypt(text, key) {
     return decrypted;
 }
 
+// Funksjon for å legge til en ny kode i databasen
 function newCode(event) {
     // Hindrer default form submit
     event.preventDefault();
@@ -144,6 +150,7 @@ function newCode(event) {
     insertCode(data);
 }
 
+// Funksjon som snakker med PHP
 function insertCode(data) {
     // Sender en POST-request til php scriptet
     fetch("http://172.20.128.85/Backend/newCode.php", {
@@ -162,7 +169,7 @@ function insertCode(data) {
     .then(json => {
         if (json.status === "success") {
             alert("Data inserted succesfully");
-            // Reloader vinduet
+            // "Reloader" vinduet
             location.reload();
         } else {
             console.error("Error", json.message);
@@ -185,6 +192,7 @@ function createRandomCode(length) {
     return result;
 }
 
+// Funksjon som kopierer 'ouput' teksten til utklippstavlen
 function copy() {
     // Hent tekst området
     var element = document.getElementById("output");
@@ -192,12 +200,12 @@ function copy() {
     const selection = window.getSelection();
     const range = document.createRange();
     
-    // Select the text content
+    // Velger tekst-innholdet
     range.selectNodeContents(element);
     selection.removeAllRanges();
     selection.addRange(range);
 
-    // Attempt to copy to clipboard
+    // Prøver å kopiere
     const success = document.execCommand('copy');
     
     if (success) {
@@ -206,6 +214,6 @@ function copy() {
         console.error("Failed to copy. Please use Ctrl+C.");
     }
 
-    // Deselect the text
+    // "Deselect" teksten
     selection.removeAllRanges();
 }
