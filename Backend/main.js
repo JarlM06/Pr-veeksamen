@@ -122,3 +122,59 @@ function substituteDecrypt(text, key) {
     }
     return decrypted;
 }
+
+function newCode(event) {
+    // Hindrer default form submit
+    event.preventDefault();
+
+    // Hent data fra form
+    var form = event.target;
+    var formData = new FormData(form);
+
+    // Ekstrakt individuell data fra formData
+    var name = formData.get('input-name');
+    var code = createRandomCode(20);
+
+    // Lager et objekt som inneholder all dataen
+    const data = {
+        "input-newCode": code,
+        "input-name": name
+    };
+
+    // Sender en POST-request til php scriptet
+    fetch("newCode.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(json => {
+        if (json.status === "success") {
+            alert("Data inserted succesfully");
+        } else {
+            console.error("Error", json.message);
+            alert("Failed to insert data: " + json.message);
+        }
+    })
+    .catch(error => {
+        console.error("Fetch error:", error);
+        alert("An error occurred: " + error.message);
+    })
+}
+
+// Funksjon som lager en tilfeldig kode
+function createRandomCode(length) {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+}

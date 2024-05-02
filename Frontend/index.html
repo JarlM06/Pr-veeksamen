@@ -19,12 +19,7 @@
         <!-- En form som legger til en ny 'krypteringskode' med navn -->
         <div class="form-container">
             <h2>Ny kryptering</h2>
-            <form action="../Backend/newCode.php" method="post" id="addCode">
-                <div class="input-field">
-                    <label for="input-newCode">Ny kode for kryptering</label>
-                    <input type="text" name="input-newCode" id="input-newCode">
-                </div>
-                <br>
+            <form onsubmit="newCode(event)">
                 <div class="input-field">
                     <label for="input-name">Navn for kryptering</label>
                     <input type="text" name="input-name" id="input-name">
@@ -49,6 +44,7 @@
             <form onsubmit="encrypt(event)">
                 <div class="input-field">
                     <label for="input-code">Kode for kryptering</label>
+                    <!-- Henter alle "kodene fra databasen og lister dem i en dropdown" -->
                     <?php include '../Backend/getNames.php'; ?>
                 </div>
                 <br>
@@ -67,6 +63,7 @@
             <form onsubmit="decrypt(event)">
                 <div class="input-field">
                     <label for="input-code">Kode for dekryptering</label>
+                    <!-- Henter alle "kodene fra databasen og lister dem i en dropdown" -->
                     <?php include '../Backend/getNames.php'; ?>
                 </div>
                 <br>
