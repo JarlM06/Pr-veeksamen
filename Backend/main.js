@@ -167,9 +167,6 @@ function newCode(event) {
         console.error("Fetch error:", error);
         alert("An error occurred: " + error.message);
     })
-
-    // Reloader vinduet
-    location.reload();
 }
 
 // Funksjon som lager en tilfeldig kode
