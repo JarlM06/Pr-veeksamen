@@ -20,10 +20,9 @@
         <div class="form-container">
             <h2>Ny kryptering</h2>
             <form onsubmit="newCode(event)">
-                <label for="input-name">Navn for kryptering</label>
                 <div class="input-field">
-                    <input type="text" name="input-name" id="input-name">
-                    <div class="tooltip">Skriv inn et navn som tilhører en tilfeldig generert kode</div>
+                    <input type="text" name="input-name" id="input-name" placeholder="Krypteringsnavn">
+                    <div class="tooltip">Skriv inn et navn som tilhører den tilfeldig genererte koden</div>
                 </div>
                 <br><br>
                 <input type="submit" value="Send Inn">
@@ -34,7 +33,7 @@
         <div class="form-container">
             <h2>Utdata</h2>
             <br>
-            <p id="output"></p>
+            <p id="output">Her vises utdataen fra kryptering og dekryptering</p>
             <button onclick="copy()">Kopier tekst</button>
         </div>
     </div>
@@ -51,9 +50,8 @@
                     <div class="tooltip">Velg et navn med tilhørende kode som skal brukes for kryptering</div>
                 </div>
                 <br><br>
-                <label for="input-text">Tekst som skal krypteres</label>
                 <div class="input-field">
-                    <input type="text" name="input-text" id="input-text" class="input">
+                    <input type="text" name="input-text" id="input-text" class="input" placeholder="Dette blir kryptert!">
                     <div class="tooltip">Alt kan skrives inn, men symboler, tegn og mellomrom vil bli ignorert</div>
                 </div>
                 <br><br>
@@ -72,9 +70,8 @@
                     <div class="tooltip">Velg et navn med tilhørende kode som skal brukes for dekryptering</div>
                 </div>
                 <br><br>
-                <label for="input-text">Tekst som skal dekrypteres</label>
                 <div class="input-field">
-                    <input type="text" name="input-text" id="input-text" class="input">
+                    <input type="text" name="input-text" id="input-text" class="input" placeholder="Dette blir dekryptert!">
                     <div class="tooltip">Alt kan skrives inn, men symboler, tegn og mellomrom vil bli ignorert</div>
                 </div>
                 <br><br>
