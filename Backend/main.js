@@ -142,8 +142,6 @@ function newCode(event) {
     };
 
     insertCode(data);
-
-    location.reload();
 }
 
 function insertCode(data) {
