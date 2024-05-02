@@ -20,11 +20,12 @@
         <div class="form-container">
             <h2>Ny kryptering</h2>
             <form onsubmit="newCode(event)">
+                <label for="input-name">Navn for kryptering</label>
                 <div class="input-field">
-                    <label for="input-name">Navn for kryptering</label>
                     <input type="text" name="input-name" id="input-name">
+                    <div class="tooltip">Skriv inn et navn som tilhører en tilfeldig generert kode</div>
                 </div>
-                <br>
+                <br><br>
                 <input type="submit" value="Submit">
             </form>
         </div>
@@ -43,17 +44,19 @@
         <div class="form-container">
             <h2>Krypter</h2>
             <form onsubmit="encrypt(event)">
+                <label for="input-code">Kode for kryptering</label>
                 <div class="input-field">
-                    <label for="input-code">Kode for kryptering</label>
                     <!-- Henter alle "kodene fra databasen og lister dem i en dropdown" -->
                     <?php include '../Backend/getNames.php'; ?>
+                    <div class="tooltip">Velg et navn med tilhørende kode som skal brukes for kryptering</div>
                 </div>
-                <br>
+                <br><br>
+                <label for="input-text">Tekst som skal krypteres</label>
                 <div class="input-field">
-                    <label for="input-text">Tekst som skal krypteres</label>
                     <input type="text" name="input-text" id="input-text" class="input">
+                    <div class="tooltip">Alt kan skrives inn, men symboler, tegn og mellomrom vil bli ignorert</div>
                 </div>
-                <br>
+                <br><br>
                 <input type="submit" value="Submit">
             </form>
         </div>
@@ -62,17 +65,19 @@
         <div class="form-container">
             <h2>Dekrypter</h2>
             <form onsubmit="decrypt(event)">
+                <label for="input-code">Kode for dekryptering</label>
                 <div class="input-field">
-                    <label for="input-code">Kode for dekryptering</label>
                     <!-- Henter alle "kodene fra databasen og lister dem i en dropdown" -->
                     <?php include '../Backend/getNames.php'; ?>
+                    <div class="tooltip">Velg et navn med tilhørende kode som skal brukes for dekryptering</div>
                 </div>
-                <br>
+                <br><br>
+                <label for="input-text">Tekst som skal dekrypteres</label>
                 <div class="input-field">
-                    <label for="input-text">Tekst som skal dekrypteres</label>
                     <input type="text" name="input-text" id="input-text" class="input">
+                    <div class="tooltip">Alt kan skrives inn, men symboler, tegn og mellomrom vil bli ignorert</div>
                 </div>
-                <br>
+                <br><br>
                 <input type="submit" value="Submit">
             </form>
         </div>
