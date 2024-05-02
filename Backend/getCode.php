@@ -1,41 +1,42 @@
 <?php
-header('Content-Type: application/json'); // Set the content type to JSON
+header('Content-Type: application/json');
 
-// MySQL server and login information
+// Informasjon om MySQL server og login
 $servername = "172.20.128.85";
 $username = "root";
 $password = "Akademiet99";
 $dbname = "proveeksamen";
 
-// Create connection to MySQL
+// Lager kobling til MySQL
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Sjekker koblingen
 if ($conn->connect_error) {
     die(json_encode(["error" => "Connection failed: " . $conn->connect_error])); // Return JSON error
 }
 
-// Get data from POST request
-$name = trim(file_get_contents('php://input')); // Read and trim the raw input
+// Hent data fra POST request
+$name = trim(file_get_contents('php://input'));
 
-// Escape input to prevent SQL injection
+// Bruker "escape input" for å hindre SQL injection
 $name = $conn->real_escape_string($name);
 
-// Fetch data from the database
+// Henter dataen fra databasen
 $query = "SELECT * FROM codes WHERE Name = '$name'";
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
-    // Fetch the results as an associative array
+    // Henter resultatene som en array
     $data = [];
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row; // Collect all rows
+        $data[] = $row;
     }
 
-    echo json_encode($data); // Encode the data as JSON
+    echo json_encode($data);
 } else {
-    echo json_encode([]); // Return an empty array if no results
+    echo json_encode([]);
 }
 
-$conn->close(); // Close the connection
+// Stenger koblingen til databasen
+$conn->close();
 ?>

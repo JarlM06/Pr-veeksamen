@@ -168,17 +168,14 @@ function insertCode(data) {
     })
     .then(json => {
         if (json.status === "success") {
-            alert("Data inserted succesfully");
             // "Reloader" vinduet
             location.reload();
         } else {
             console.error("Error", json.message);
-            alert("Failed to insert data: " + json.message);
         }
     })
     .catch(error => {
         console.error("Fetch error:", error);
-        alert("An error occurred: " + error.message);
     })
 }
 
