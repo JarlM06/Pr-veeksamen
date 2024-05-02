@@ -22,3 +22,38 @@ Programmet bruker HTML og CSS for frontend koding, og JavaScript og PHP for back
 ``getCode.php`` → PHP som henter koden tilhørende det navnet brukeren har valgt.
 
 ### Spesifikasjoner
+Hvilke spesifikasjoner du burde ha på serveren din for å kjøre programmet.
+
+* Du trenger å sette opp en server.
+* Serveren trenger Apache2 installert.
+* Serveren trenger MariaDB eller MySQL installert.
+* Det er anbefalt å laste ned git.
+* Husk å endre permissions og starting directory etter hvordan du vil ha det
+  * Du kan endre DocumentRoot i /etc/apache2/sites-available/000-default.conf for å endre startside
+* Sett opp en database og table på SQL serveren
+* Endre PHP filene med brukernavn, passord, adresse, databasenavn og tablenavn etter hva du har satt det til
+
+![Server spesifikasjoner](specsProveeksamen.png)
+<br><br>
+## Brukertesting
+1. Prøv å legg til en ny 'kode' med et selvvalgt navn.
+2. Vises den opp i listen?
+3. Velg en kode (et navn) og skriv inn noe du vil kryptere, deretter trykk submit.
+4. Hva skjer?
+5. Prøv å dekrypter det som ble skrevet ut *NB! Husk å velg den samme koden/navnet*
+<br><br>
+6. Hvordan var programmet å bruke?
+7. Møtte du på noen problemer, eller funket alt som det skulle?
+8. Hva kunne forbedres?
+
+## Kilder
+
+HTML, PHP, CSS og SQL - https://www.w3schools.com/
+
+GitHub i Ubuntu - https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
+
+Apache2 - https://ubuntu.com/tutorials/install-and-configure-apache#1-overview
+
+Testing mot SQL injection - https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection
+
+Hjelp med error fiksing og krypteringsfunksjonen - https://chat.openai.com/
