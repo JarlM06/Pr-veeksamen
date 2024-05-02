@@ -15,7 +15,7 @@ function encrypt(event) {
         .then((code) => {
             const encryptedText = substituteEncrypt(text, code);
             const output = document.getElementById("output");
-            output.innerHTML = encryptedText;
+            output.value = encryptedText;
             console.log(encryptedText);
         })
         .catch((error) => {
@@ -40,7 +40,7 @@ function decrypt(event) {
         .then((code) => {
             const decryptedText = substituteDecrypt(text, code);
             const output = document.getElementById("output");
-            output.innerHTML = decryptedText;
+            output.value = decryptedText;
             console.log(decryptedText);
         })
         .catch((error) => {
