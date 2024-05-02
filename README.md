@@ -48,11 +48,11 @@ Hvilke spesifikasjoner du burde ha på serveren din for å kjøre programmet.
 
 ## Kilder
 
-HTML, PHP, CSS og SQL - https://www.w3schools.com/
+Generelt om HTML, PHP, CSS og SQL - https://www.w3schools.com/
 
 GitHub i Ubuntu - https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
 
-Apache2 - https://ubuntu.com/tutorials/install-and-configure-apache#1-overview
+Oppsett av Apache2 - https://ubuntu.com/tutorials/install-and-configure-apache#1-overview
 
 Testing mot SQL injection - https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection
 
