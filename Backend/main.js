@@ -187,8 +187,25 @@ function createRandomCode(length) {
 
 function copy() {
     // Hent tekst området
-    var copyText = document.getElementById("output");
+    var element = document.getElementById("output");
   
-    // Kopier teksten i tekst området
-    navigator.clipboard.writeText(copyText.innerHTML);
+    const selection = window.getSelection();
+    const range = document.createRange();
+    
+    // Select the text content
+    range.selectNodeContents(element);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    // Attempt to copy to clipboard
+    const success = document.execCommand('copy');
+    
+    if (success) {
+        console.log("Text copied to clipboard.");
+    } else {
+        console.error("Failed to copy. Please use Ctrl+C.");
+    }
+
+    // Deselect the text
+    selection.removeAllRanges();
 }
