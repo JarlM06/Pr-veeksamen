@@ -15,7 +15,7 @@ function encrypt(event) {
         .then((code) => {
             const encryptedText = substituteEncrypt(text, code);
             const output = document.getElementById("output");
-            output.value = encryptedText;
+            output.innerHTML = encryptedText;
             console.log(encryptedText);
         })
         .catch((error) => {
@@ -40,7 +40,7 @@ function decrypt(event) {
         .then((code) => {
             const decryptedText = substituteDecrypt(text, code);
             const output = document.getElementById("output");
-            output.value = decryptedText;
+            output.innerHTML = decryptedText;
             console.log(decryptedText);
         })
         .catch((error) => {
@@ -189,10 +189,6 @@ function copy() {
     // Hent tekst området
     var copyText = document.getElementById("output");
   
-    // Velg tekst området
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobiler ol.
-  
     // Kopier teksten i tekst området
-    navigator.clipboard.writeText(copyText.value);
+    navigator.clipboard.writeText(copyText.innerHTML);
 }
