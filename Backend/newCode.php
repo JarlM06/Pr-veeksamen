@@ -17,12 +17,12 @@ if ($conn->connect_error) {
     exit();
 }
 
+// Les input data fra AJAX request
+$rawData = file_get_contents("php://input");
+$data = json_decode($rawData, true);
+
 // Sjekker om dataene eksisterer
 if (isset($data['input-newCode']) && isset($data['input-name'])) {
-    // Les input data fra AJAX request
-    $rawData = file_get_contents("php://input");
-    $data = json_decode($rawData, true);
-
     // Henter dataen som skal brukes
     $code = $data['input-newCode'];
     $name = $data['input-name'];
