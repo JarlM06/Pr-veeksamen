@@ -162,6 +162,8 @@ function insertCode(data) {
     .then(json => {
         if (json.status === "success") {
             alert("Data inserted succesfully");
+            // Reloader vinduet
+            location.reload();
         } else {
             console.error("Error", json.message);
             alert("Failed to insert data: " + json.message);
