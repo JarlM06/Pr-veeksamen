@@ -141,6 +141,12 @@ function newCode(event) {
         "input-name": name
     };
 
+    insertCode(data);
+
+    location.reload();
+}
+
+function insertCode(data) {
     // Sender en POST-request til php scriptet
     fetch("http://172.20.128.85/Backend/newCode.php", {
         method: "POST",
